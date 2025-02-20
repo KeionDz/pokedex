@@ -3,24 +3,38 @@
 <head>
   <%- include("../partials/header") %>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="container mx-auto p-5">
-    <h1 class="text-3xl font-bold text-center mb-5">Pokédex</h1>
+<body class="min-h-screen bg-cover bg-center" style="background-image: url('/images/bgpokemon.jpg');">
+  <div class="container mx-auto p-6">
+    
+    <!-- 🏆 Title -->
+    <h1 class="text-center mb-8">
+      <img src="/images/pokedex-logo.png" alt="Pokédex" class="mx-auto w-48">
+    </h1>
 
     <!-- 🔍 Search Form -->
-    <form action="/search" method="GET" class="flex justify-center mb-5">
-      <input type="text" name="name" placeholder="Search Pokémon..." class="px-4 py-2 border rounded-l-lg focus:outline-none">
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-r-lg">Search</button>
-    </form>
+    <!-- 🔍 Search Form -->
+<form action="/search" method="GET" class="flex justify-center mb-6">
+  <input 
+    type="text" name="name" placeholder="Search Pokémon..." 
+    class="w-2/3 md:w-1/3 px-4 py-3 bg-white border border-gray-400 text-gray-900 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+  <button 
+    type="submit" 
+    class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-r-lg transition">
+    Search
+  </button>
+</form>
 
-    <!-- Pokémon List -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+    <!-- 🎴 Pokémon List -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       <% pokemonList.forEach(pokemon => { %>
-        <a href="/pokemon/<%= pokemon.name %>" class="p-4 bg-white shadow rounded-lg text-center hover:shadow-xl">
+        <a href="/pokemon/<%= pokemon.name %>" 
+          class="p-6 bg-white text-gray-900 rounded-2xl shadow-lg text-center hover:shadow-2xl transform hover:scale-105 transition duration-300">
           <p class="text-xl capitalize font-semibold"><%= pokemon.name %></p>
         </a>
       <% }); %>
     </div>
+    
   </div>
   <%- include("../partials/footer") %>
 </body>
