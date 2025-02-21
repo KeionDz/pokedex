@@ -7,16 +7,20 @@ const router = express.Router();
 const API_URL = process.env.API_URL;
 router.get("/", async (req, res) => {
     try {
-        const response = await axios.get(`${API_URL}?limit=20`);
-
-        return res.render("pages/home",{pokemonList: response.data.results});
+        const response = await axios.get(`${API_URL}?limit=30`);
+        const pokemonList = await Promise.all(response.data.results.map(async (pokemon) => {
+            const details = await axios.get(pokemon.url); // Fetch each Pokémon's details
+            return {
+                name: pokemon.name,
+                image: details.data.sprites.front_default // Extract the sprite image
+            };
+        }));
+        return res.render("pages/home", { pokemonList });      
     } catch (error) {
-        return res.status(500).json({
-            message: "Internal Server Error"
-        });
+        console.error(error);
+        return res.status(500).json({ message: "Internal Server Error" });
     }
 });
-
 router.get("/pokemon/:name", async (req, res) => {
     try {
         const { name } = req.params;

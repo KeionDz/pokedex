@@ -6,47 +6,46 @@
 <body style="background-image: url('/images/bgpokemon.jpg'); background-size: cover; background-position: center;" 
       class="text-gray-100 min-h-screen flex flex-col items-center justify-center">
 
-  <!-- Title -->
-  <h1 class="text-4xl font-bold text-center mb-6 capitalize bg-white text-gray-900 px-6 py-2 rounded-lg shadow-md">
-    <%= pokemon.name %>
-  </h1>
+  
 
   <!-- Pokémon Card Container -->
-  <div class="bg-white text-gray-900 rounded-2xl shadow-xl border-4 p-6 w-full max-w-sm text-center relative"
-       style="border-color: <%= getTypeColor(pokemon.types[0].type.name) %>;">
-    
-    <!-- Pokémon Image -->
-    <img 
-      src="<%= pokemon.sprites.front_default %>" 
-      alt="<%= pokemon.name %>" 
-      class="w-40 h-40 mx-auto border-2 border-gray-300 rounded-lg"
-    />
+  <div class="bg-gray-800 text-gray-900 rounded-2xl shadow-xl border-4 p-6 w-full max-w-sm text-center relative"
+     style="border-color: <%= getTypeColor(pokemon.types[0].type.name) %>;">
+  
+  <!-- Pokémon Image -->
+  <img 
+    src="<%= pokemon.sprites.front_default %>" 
+    alt="<%= pokemon.name %>" 
+    class="w-40 h-40 mx-auto shadow-lg"
+  />
 
-    <!-- Pokémon Name & HP -->
-    <div class="mt-4">
-      <p class="text-2xl font-bold capitalize"><%= pokemon.name %></p>
-      <p class="text-lg font-semibold text-red-500">❤️ HP: <%= pokemon.stats[0].base_stat %></p>
-    </div>
-
-    <!-- Pokémon Type Badges -->
-    <div class="flex justify-center gap-2 mt-3">
-      <% pokemon.types.forEach(t => { %>
-        <span class="px-3 py-1 text-sm font-semibold rounded-full text-white"
-              style="background-color: <%= getTypeColor(t.type.name) %>">
-          <%= t.type.name %>
-        </span>
-      <% }) %>
-    </div>
-
-    <!-- Pokémon Stats -->
-    <div class="mt-4 space-y-2 text-gray-700 text-sm bg-gray-100 p-3 rounded-lg shadow-md">
-      <p class="font-semibold">⚖ Weight: <span class="text-blue-500"><%= pokemon.weight %></span></p>
-      <p class="font-semibold">📏 Height: <span class="text-blue-500"><%= pokemon.height %></span></p>
-      <p class="font-semibold">⚡ Speed: <span class="text-green-500"><%= pokemon.stats[5].base_stat %></span></p>
-      <p class="font-semibold">🛡 Defense: <span class="text-purple-500"><%= pokemon.stats[2].base_stat %></span></p>
-      <p class="font-semibold">🔥 Attack: <span class="text-red-500"><%= pokemon.stats[1].base_stat %></span></p>
-    </div>
+  <!-- Pokémon Name & HP -->
+  <div class="mt-4">
+    <p class="text-2xl font-bold text-white capitalize"><%= pokemon.name %></p>
+    <p class="text-lg font-semibold text-red-500">❤️ HP: <%= pokemon.stats[0].base_stat %></p>
   </div>
+
+  <!-- Pokémon Type Badges -->
+  <div class="flex justify-center gap-2 mt-3">
+    <% pokemon.types.forEach(t => { %>
+      <span class="px-3 py-1 text-sm font-semibold rounded-full text-white"
+            style="background-color: <%= getTypeColor(t.type.name) %>">
+        <%= t.type.name %>
+      </span>
+    <% }) %>
+  </div>
+
+  <!-- Pokémon Stats -->
+  <div class="mt-4 space-y-2 text-gray-100 text-sm bg-gray-600 p-3 rounded-lg shadow-md">
+    <p class="font-semibold">⚖ Weight: <span class="text-blue-500"><%= pokemon.weight %></span></p>
+    <p class="font-semibold">📏 Height: <span class="text-blue-500"><%= pokemon.height %></span></p>
+    <p class="font-semibold">⚡ Speed: <span class="text-green-500"><%= pokemon.stats[5].base_stat %></span></p>
+    <p class="font-semibold">🛡 Defense: <span class="text-purple-500"><%= pokemon.stats[2].base_stat %></span></p>
+    <p class="font-semibold">🔥 Attack: <span class="text-red-500"><%= pokemon.stats[1].base_stat %></span></p>
+  </div>
+
+  
+</div>
 
   <!-- Back Button -->
   <div class="mt-6">
